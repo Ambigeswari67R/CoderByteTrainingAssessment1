@@ -1,1 +1,1 @@
-# CoderByteTrainingAssessment1
+# FinzlyTrainingAssessment
