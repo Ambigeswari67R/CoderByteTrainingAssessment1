@@ -75,7 +75,13 @@ public class Trade {
 	public double getRate() {
 		return rate;
 	}
+        public String getRateInformation() {
+		return rateInformation;
+	}
 
+	public void setRateInformation(String rateInformation) {
+		this.rateInformation = rateInformation;
+	}
 
 	public String getConfirmation() {
 		return confirmation;
@@ -122,14 +128,6 @@ public class Trade {
 
 	private static String formatAmount(double amount) {
 		return String.format("%.2f", amount);
-	}
-
-	public String getRateInformation() {
-		return rateInformation;
-	}
-
-	public void setRateInformation(String rateInformation) {
-		this.rateInformation = rateInformation;
 	}
 
 }
