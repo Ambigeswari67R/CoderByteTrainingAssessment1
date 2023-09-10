@@ -1,13 +1,20 @@
 package com.FxTradingAssignment.FxTradingMicroService.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Trade {
 	
 	private static double usdToInrRate = 66.00;
+	@Id
 	private int tradeNo;
+	
 	private String currencyPair;
 	private String customerName;
 	private double amount;
-	private String rate;
+	private final double rate=usdToInrRate;
+	private String rateInformation;
 	private String confirmation;
 	private String rateMsg;
 	private String bookedMsg;
@@ -17,11 +24,11 @@ public class Trade {
 
 	}
 
-	public Trade(String currencyPair, String customerName, double amount, String rate) {
+	public Trade(String currencyPair, String customerName, double amount) {
 		this.currencyPair = currencyPair;
 		this.customerName = customerName;
 		this.amount = amount;
-		this.rate = rate;
+		
 	}
 
 	
@@ -65,13 +72,10 @@ public class Trade {
 		this.amount = amount;
 	}
 
-	public String getRate() {
+	public double getRate() {
 		return rate;
 	}
 
-	public void setRate(String rate) {
-		this.rate = rate;
-	}
 
 	public String getConfirmation() {
 		return confirmation;
@@ -85,7 +89,7 @@ public class Trade {
 		double inrAmount = amount * usdToInrRate;
 		if (currencyPair.equalsIgnoreCase("USDINR")) {
 
-			if (trade.getRate().equalsIgnoreCase("yes")) {
+			if (trade.getRateInformation().equalsIgnoreCase("yes")) {
 				rateMsg = "You are transferring INR " + formatAmount(inrAmount) + " to " + customerName + ".\n";
 			}
 			if (trade.getConfirmation().equalsIgnoreCase("book")) {
@@ -118,6 +122,14 @@ public class Trade {
 
 	private static String formatAmount(double amount) {
 		return String.format("%.2f", amount);
+	}
+
+	public String getRateInformation() {
+		return rateInformation;
+	}
+
+	public void setRateInformation(String rateInformation) {
+		this.rateInformation = rateInformation;
 	}
 
 }
