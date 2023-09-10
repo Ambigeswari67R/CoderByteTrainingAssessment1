@@ -92,4 +92,8 @@ public class TradeController {
 		System.out.println(list);
 		return list;
 	}
+	@GetMapping("/exit")
+        public String exit() {
+		return "Exiting the application...";
+	}
 }
